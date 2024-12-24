@@ -36,3 +36,18 @@ if __name__ == "__main__":
 # Memento
 
 Este foi o padrão comportamental esolhido. Ele busca tratar do problema de restauração dos atributos de um objeto sem expor os detalhes de implementação. Isso é feito a partir de uma classe responsável por armazenar os valores de um objeto, como uma espécie de Backup. No código deste repositório isso é feito a partir de uma classe Editor, responsável por "criar" textos e uma classe Snapshot (Versão) realcionada há uma dada instância de Editor, ou seja, quando salvamos um Snapshot, estamos aramazenando uma versão de Editor de forma que, ao usarmos a classe Restore(Snapshot) em Editor, restaruamos informações antigas de um texto.
+
+```python
+if __name__ == "__main__":
+    editor = Editor()
+    editor.set_text("Versão 1")
+    print(f"Texto atual: {editor.text}")
+
+    snapshot = editor.create_snapshot()#salvar texto
+
+    editor.set_text("Versão 2") #modifica texto
+    print(f"Texto alterado: {editor.text}") 
+
+    editor.restore(snapshot) #restaura texto
+    print(f"Texto restaurado: {editor.text}")
+```
