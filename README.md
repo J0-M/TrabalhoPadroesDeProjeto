@@ -25,6 +25,14 @@ class ApplicationConfigurator:
 
 Este foi o padrão estrutural escolhido. O padrão Bridge lida com o problema de relacionar classes de modo que elas não se tornem dependentes, ou seja, criar uma forma de relacionar duas classes diferentes de modo que, as alterações feitas em uma classe não afetará as demais classes que estão relacionadas a ela. No código neste repositório, isso foi feito relacionando a classe RemoteControl a uma classe Lamp atrave´s de uma classe intermediária, responsável pela ligação entre as duas. Desse modo, RemoteControl não está diretamente ligado a Lamp, pois as duas estão ligadas por uma terceira classe, assim, se quisermos substituir Lamp por algum outro dispositivo, não é necessário alterar nada em RemoteControl, apenas cirar outra conexão.
 
+``` python
+if __name__ == "__main__":
+    lamp = Lamp()
+    remote = RemoteControl(lamp)
+    remote.toggle_power()
+    remote.toggle_power()
+```
+
 # Memento
 
 Este foi o padrão comportamental esolhido. Ele busca tratar do problema de restauração dos atributos de um objeto sem expor os detalhes de implementação. Isso é feito a partir de uma classe responsável por armazenar os valores de um objeto, como uma espécie de Backup. No código deste repositório isso é feito a partir de uma classe Editor, responsável por "criar" textos e uma classe Snapshot (Versão) realcionada há uma dada instância de Editor, ou seja, quando salvamos um Snapshot, estamos aramazenando uma versão de Editor de forma que, ao usarmos a classe Restore(Snapshot) em Editor, restaruamos informações antigas de um texto.
